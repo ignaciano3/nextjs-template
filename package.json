@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@t3-oss/env-core": "^0.11.1",
@@ -45,7 +46,8 @@
   "lint-staged": {
     "*.{tsx,ts}": [
       "prettier --write",
-      "next lint --fix --max-warnings 0 ."
+      "next lint --fix --max-warnings 0 .",
+      "vitest related --run"
     ]
   }
 }
