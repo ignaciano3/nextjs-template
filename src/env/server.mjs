@@ -9,6 +9,13 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "production"]),
     DATABASE_URL: z.string().url(),
   },
+  onValidationError: (error) => {
+    console.log(
+      "❌ Invalid server environment variables:",
+      error.flatten().fieldErrors,
+    );
+    throw new Error("Invalid server environment variables");
+  },
   // eslint-disable-next-line n/no-process-env
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,
