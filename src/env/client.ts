@@ -9,13 +9,6 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_API_URL: z.string().url(),
   },
-  onValidationError: (error) => {
-    console.error(
-      "❌ Invalid client environment variables:",
-      error.flatten().fieldErrors,
-    );
-    process.exit(1);
-  },
   // eslint-disable-next-line n/no-process-env
   runtimeEnv: process.env,
 });

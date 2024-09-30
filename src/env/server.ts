@@ -7,13 +7,7 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "production"]),
-  },
-  onValidationError: (error) => {
-    console.error(
-      "❌ Invalid server environment variables:",
-      error.flatten().fieldErrors,
-    );
-    process.exit(1);
+    DATABASE_URL: z.string().url(),
   },
   // eslint-disable-next-line n/no-process-env
   runtimeEnv: process.env,
